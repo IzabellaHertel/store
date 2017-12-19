@@ -1,6 +1,7 @@
 /upgrade
 /uploads
 /plugins/woocommerce
+/plugins/advanced-custom-fields-pro
 .DS_Store
 */.DS_Store
 /themes/storefront
