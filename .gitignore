@@ -1,0 +1,9 @@
+/upgrade
+/uploads
+/plugins/woocommerce
+.DS_Store
+*/.DS_Store
+/themes/storefront
+/themes/boutique
+/themes/boutique-child/assets/img
+/themes/boutique-child/assets/css
