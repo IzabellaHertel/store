@@ -74,3 +74,29 @@ function get_coupons() {
         </div>
     <?php }
 }
+
+/**
+* Best selling products
+*
+*/
+function best_selling_products() {
+    $args = [
+        'posts_per_page' => 3,
+        'post_type' => 'product',
+        'meta_key' => 'total_sales',
+        'orderby' => 'meta_value_num'
+    ];
+    $products = new WP_Query($args); ?>
+
+    <h2>Best sellers</h2>
+    <div class="columns-3">
+        <ul class="products bestsellers">
+            <?php while ($products->have_posts()) : $products->the_post();
+                woocommerce_get_template_part('content', 'product');
+            endwhile; ?>
+        </ul>
+    </div>
+
+    <?php wp_reset_postdata();
+
+}
