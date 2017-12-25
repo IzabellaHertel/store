@@ -57,10 +57,10 @@
     });
 
     /**
-    * Slideshow
+    * Slideshows
     *
     */
-    var swiper = new Swiper('.swiper-container', {
+    var swiper = new Swiper('.swipe-1', {
         pagination: {
             el: '.swiper-pagination'
         },
@@ -68,6 +68,15 @@
             delay: 6000,
         },
         loop: true
+    });
+
+    var swiper = new Swiper('.swipe-2', {
+        slidesPerView: 3,
+        spaceBetween: 30,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
     });
 
 })(jQuery);

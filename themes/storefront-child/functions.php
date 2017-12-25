@@ -59,7 +59,7 @@ function get_coupons() {
     $coupons = get_posts($args);
 
     if (count($coupons) > 0) { ?>
-        <div class="swiper-container">
+        <div class="swiper-container swipe-1">
             <div class="swiper-wrapper">
                 <?php foreach ($coupons as $coupon) { ?>
                     <div class="swiper-slide">
@@ -98,5 +98,47 @@ function best_selling_products() {
     </div>
 
     <?php wp_reset_postdata();
-
 }
+
+/**
+* Products on sale
+*
+*/
+function products_on_sale() {
+    $args = array(
+        'post_type' => 'product',
+        'posts_per_page' => -1,
+        'meta_query' => [
+            'relation' => 'OR',
+            [
+                'key' => '_sale_price',
+                'value' => 0,
+                'compare' => '>',
+                'type' => 'numeric'
+            ],
+            [
+                'key' => '_min_variation_sale_price',
+                'value' => 0,
+                'compare' => '>',
+                'type' => 'numeric'
+            ]
+        ]
+    );
+
+    $products = new WP_Query( $args ); ?>
+    <h2>On sale right now</h2>
+    <div class="columns-3">
+        <ul class="products">
+            <div class="swiper-container swipe-2">
+                <div class="swiper-wrapper">
+                    <?php while ($products->have_posts()) : $products->the_post(); ?>
+                         <div class="swiper-slide">
+                            <?php woocommerce_get_template_part('content', 'product'); ?>
+                        </div>
+                    <?php endwhile; ?>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </ul>
+    </div>
+<?php }
