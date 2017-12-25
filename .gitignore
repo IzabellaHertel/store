@@ -6,7 +6,6 @@
 */.DS_Store
 /themes/storefront
 /themes/boutique
-/themes/boutique-child/assets/img
-/themes/boutique-child/assets/css
+/themes/storefront-child/assets/img
+/themes/storefront-child/assets/css
 .sass-cache
-/css
