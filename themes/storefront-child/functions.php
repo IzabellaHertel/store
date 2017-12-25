@@ -142,3 +142,33 @@ function products_on_sale() {
         </ul>
     </div>
 <?php }
+
+/**
+* Get recent posts
+*
+*/
+function recent_posts() {
+    $args = array(
+        'post_type' => 'post',
+    	'posts_per_page' => 3,
+    	'orderby' => 'post_date',
+    	'order' => 'DESC',
+    	'post_status' => 'publish'
+    );
+
+    $posts = new WP_Query($args); ?>
+
+    <h2>Latest from our blog</h2>
+    <div class="columns-3">
+        <ul class="blogposts">
+            <?php while($posts->have_posts()) : $posts->the_post(); ?>
+                <li class="blogpost">
+                    <a href="<?php the_permalink(); ?>">
+                        <?php the_post_thumbnail(); ?>
+                        <h3><?php the_title(); ?></h1>
+                    </a>
+                </li>
+            <?php endwhile; ?>
+        </ul>
+    </div>
+<?php }

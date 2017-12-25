@@ -6,3 +6,21 @@
         }
     }
 }
+
+.blogposts {
+    list-style: none;
+    .blogpost {
+        float: left;
+        width: 30.4347826087%;
+        text-align: center;
+        padding: 15px;
+
+        img {
+            height: 220px;
+        }
+
+        &:hover {
+            background-color: $green;
+        }
+    }
+}
