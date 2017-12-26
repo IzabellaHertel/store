@@ -172,3 +172,44 @@ function recent_posts() {
         </ul>
     </div>
 <?php }
+
+
+/**
+* Related products on single post
+*
+*/
+function related_products_post($category_name) {
+    // Get the full term from category name to access ID
+    $category = get_term_by('name', $category_name, 'product_cat');
+
+    $args = [
+        'post_type' => 'product',
+        'post_status' => 'publish',
+        'ignore_sticky_posts' => true,
+        'posts_per_page' => '3',
+        'orderby' => 'rand',
+        'tax_query' => [
+            [
+                'taxonomy' => 'product_cat',
+                'terms' => $category->term_id,
+                'operator' => 'IN'
+            ],
+            [
+                'taxonomy' => 'product_visibility',
+                'field' => 'slug',
+                'terms' => 'exclude-from-catalog',
+                'operator' => 'NOT IN'
+            ]
+        ]
+    ];
+    $products = new WP_Query($args); ?>
+
+    <h2>Related to <?php the_title(); ?></h2>
+    <div class="columns-3">
+        <ul class="products bestsellers">
+            <?php while ($products->have_posts()) : $products->the_post();
+                woocommerce_get_template_part('content', 'product');
+            endwhile; ?>
+        </ul>
+    </div>
+<?php }

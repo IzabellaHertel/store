@@ -60,7 +60,8 @@
   margin-right: 4.347826087%; }
 
 .blogposts {
-  list-style: none; }
+  list-style: none;
+  margin: 0; }
   .blogposts .blogpost {
     float: left;
     width: 30.4347826087%;

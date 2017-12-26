@@ -1,5 +1,4 @@
-<?php get_header(); ?>
-<?php
+<?php get_header();
 get_coupons();
 best_selling_products();
 products_on_sale();
