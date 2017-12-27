@@ -9,9 +9,10 @@ if (have_posts()) :
         <?php if (has_post_thumbnail()) {
             the_post_thumbnail();
         }
-        the_content();
+        the_content(); ?>
+        <small>Category: <?php the_category(); ?></small>
 
-    endwhile;
+    <?php endwhile;
 endif;
 
 if (get_field('product_cat_name')) {
