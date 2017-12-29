@@ -55,7 +55,15 @@ if (in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_
                     $month = (int)substr($ssn, 4, 2);
                     $day = (int)substr($ssn, 6, 2);
 
-                    // Check validity with day in month
+                    // Check validity of day and month
+                    if ($month < 1 || $month > 12) {
+                        wc_add_notice(__('Incorrect month given in ssn.', 'woothemes'). $error_message, 'error');
+                        return false;
+                    }
+                    if ($day < 1) {
+                        wc_add_notice(__('Incorrect day given in ssn.', 'woothemes'). $error_message, 'error');
+                        return false;
+                    }
                     switch ($month) {
                         case 1: case 3: case 5: case 7: case 8: case 10: case 12:
                             if ($day > 31) {
