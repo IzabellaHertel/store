@@ -12,6 +12,22 @@ function add_child_theme_scripts() {
 }
 add_action('wp_enqueue_scripts', 'add_child_theme_scripts');
 
+
+/**
+* Google map api key and script
+*
+*/
+function my_acf_init() {
+    acf_update_setting('google_api_key', 'AIzaSyDINrZWq2LjXRB7O_f8_HGE1B7IKIrht-E ');
+}
+add_action('acf/init', 'my_acf_init');
+
+function add_child_theme_google_map() {
+    wp_enqueue_script('google-map', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDINrZWq2LjXRB7O_f8_HGE1B7IKIrht-E', [], '3', true );
+}
+
+add_action( 'wp_enqueue_scripts', 'add_child_theme_google_map' );
+
 /**
 * Crete stores with Custom Post Types
 * add action init
