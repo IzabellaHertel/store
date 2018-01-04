@@ -23,10 +23,10 @@ function my_acf_init() {
 add_action('acf/init', 'my_acf_init');
 
 function add_child_theme_google_map() {
-    wp_enqueue_script('google-map', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDINrZWq2LjXRB7O_f8_HGE1B7IKIrht-E', [], '3', true );
+    wp_enqueue_script('google-map', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDINrZWq2LjXRB7O_f8_HGE1B7IKIrht-E', [], '3', true);
 }
 
-add_action( 'wp_enqueue_scripts', 'add_child_theme_google_map' );
+add_action('wp_enqueue_scripts', 'add_child_theme_google_map');
 
 /**
 * Crete stores with Custom Post Types
@@ -35,10 +35,10 @@ add_action( 'wp_enqueue_scripts', 'add_child_theme_google_map' );
 function add_stores() {
     register_post_type('stores',
         [
-            'labels' => array(
+            'labels' => [
                 'name' => __('Stores'),
                 'singular_name' => __('Store')
-            ),
+            ],
             'public' => true,
             'has_archive' => true,
             'rewrite' => ['slug' => 'stores'],
@@ -157,7 +157,8 @@ function products_on_sale() {
             </div>
         </ul>
     </div>
-<?php }
+    <?php wp_reset_postdata();
+}
 
 /**
 * Get recent posts
@@ -187,7 +188,8 @@ function recent_posts() {
             <?php endwhile; ?>
         </ul>
     </div>
-<?php }
+    <?php wp_reset_postdata();
+}
 
 
 /**
@@ -228,4 +230,36 @@ function related_products_post($category_name) {
             endwhile; ?>
         </ul>
     </div>
-<?php }
+    <?php wp_reset_postdata();
+}
+
+
+/**
+* Featured products
+*
+*/
+function featured_products() {
+    $args = [
+        'post_type' => 'product',
+        'posts_per_page' => 3,
+        'tax_query' => [
+            [
+                'taxonomy' => 'product_visibility',
+                'field' => 'name',
+                'terms' => 'featured',
+            ],
+        ],
+    ];
+      $products = new WP_Query($args);
+      if ($products->have_posts()) { ?>
+        <h2>Featured products</h2>
+        <div class="columns-3">
+            <ul class="products bestsellers">
+                <?php while ($products->have_posts()) : $products->the_post();
+                    wc_get_template_part('content', 'product');
+                endwhile; ?>
+            </ul>
+        </div>
+    <?php }
+    wp_reset_postdata();
+}
