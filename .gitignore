@@ -2,6 +2,7 @@
 /uploads
 /plugins/woocommerce
 /plugins/advanced-custom-fields-pro
+/plugins/contact-form-7
 .DS_Store
 */.DS_Store
 /themes/storefront
