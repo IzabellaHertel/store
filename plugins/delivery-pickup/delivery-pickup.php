@@ -5,15 +5,15 @@
 */
 
 if (in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_option('active_plugins')))) {
-    function your_shipping_method_init() {
-        if (!class_exists( 'WC_Your_Shipping_Method')) {
-            class WC_Your_Shipping_Method extends WC_Shipping_Method {
+    function delivery_pickup_store_init() {
+        if (!class_exists('WC_Delivery_Pickup_Method')) {
+            class WC_Delivery_Pickup_Method extends WC_Shipping_Method {
                 public function __construct() {
-                    $this->id = 'your_shipping_method';
-                    $this->method_title = __('Local pickup at store');
-                    $this->method_description = __('Lets the customer choose which store they want to pickup.');
+                    $this->id = 'delivery_pickup_method';
+                    $this->method_title = __('Pickup at store');
+                    $this->method_description = __('Lets the customer choose from which store they want to pickup.');
                     $this->enabled = 'yes';
-                    $this->title = "Local pickup at ";
+                    $this->title = "Pickup at ";
                     $this->init();
                 }
 
@@ -78,10 +78,10 @@ if (in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_
             }
         }
     }
-    add_action( 'woocommerce_shipping_init', 'your_shipping_method_init' );
-    function add_your_shipping_method($methods) {
-        $methods['your_shipping_method'] = 'WC_Your_Shipping_Method';
+    add_action('woocommerce_shipping_init', 'delivery_pickup_store_init');
+    function add_delivery_pickup_method($methods) {
+        $methods['delivery_pickup_method'] = 'WC_Delivery_Pickup_Method';
         return $methods;
     }
-    add_filter( 'woocommerce_shipping_methods', 'add_your_shipping_method' );
+    add_filter('woocommerce_shipping_methods', 'add_delivery_pickup_method');
 }
