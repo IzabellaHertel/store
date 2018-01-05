@@ -38,9 +38,9 @@ if (in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_
                             'default' => __('Choose which store to pickup your package', 'woocommerce')
                         ],
                         'min_amount' => [
-                            'title' => __('Minimun order amount', 'woocommerce'),
+                            'title' => __('Minimum order amount', 'woocommerce'),
                             'type' => 'text',
-                            'description' => __('This controls the description which the user sees during checkout.', 'woocommerce'),
+                            'description' => __('Minimum order amount', 'woocommerce'),
                             'default' => __('400', 'woocommerce')
                         ],
                         'cost' => [
