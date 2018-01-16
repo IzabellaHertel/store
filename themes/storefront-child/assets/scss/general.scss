@@ -26,6 +26,32 @@
     }
 }
 
+.blogpost {
+    width: 100%;
+    margin-bottom: 20px;
+
+    .image {
+        max-width: 20%;
+        display: inline-block;
+    }
+    &:nth-child(2n) {
+        .content {
+            h2 {
+                color: white;
+            }
+            color: white;
+            background-color: $blue;
+        }
+    }
+    .content {
+        width: 78%;
+        background-color: $green;
+        display: inline-block;
+        padding: 20px 40px;
+        text-align: center;
+    }
+}
+
 
 .acf-map {
     height: 400px;
