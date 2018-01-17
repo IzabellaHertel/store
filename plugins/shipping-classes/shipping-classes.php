@@ -44,10 +44,18 @@ if (in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_
 
 
                 public function calculate_shipping($package = []) {
+                    global $woocommerce;
+                    $items = $woocommerce->cart->get_cart();
+
                     // Get the weights of the products in cart
-                    $product_weights = [];
-                    foreach ($package['contents'] as $item_id => $values) {
-                        $product_weights[$values['data']->get_shipping_class()] = $values['data']->get_weight();
+                    $product_weights = []; // Key = product shipping class name, value = product weight
+
+                    foreach ($items as $item) {
+                        if ($item['data']->shipping_class) {
+                            $product_weights[$item['data']->get_shipping_class()] = $item['data']->get_weight();
+                        } else {
+                            $product_weights['standard'] = $item['data']->get_weight();
+                        }
                     }
 
                     // Get the shipping class of the heaviest product
@@ -61,15 +69,16 @@ if (in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_
                         $shipping_costs[] = $cost;
                     }
                     $shipping_cost = max($shipping_costs);
+                    // To prevent woocommerce from adding 25% tax when tax is already included in price
+                    $cost = $shipping_cost / 1.25;
 
                     $rate = [
                         'id' => $this->id,
                         'label' => $this->title,
-                        'cost' => $shipping_cost,
-                        'calc_tax' => 'per_item'
+                        'cost' => $cost,
+                        'calc_tax' => 'per_order'
                     ];
                     $this->add_rate($rate);
-
                 }
             }
         }
