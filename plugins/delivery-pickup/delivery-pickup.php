@@ -65,12 +65,15 @@ if (in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_
                         ]
                     );
 
+                    // To prevent woocommerce from adding 25% tax when tax is already included in price
+                    $cost = $cost / 1.25;
+
                     foreach ($stores as $store) {
                         $rate = [
                             'id' => $this->id.'-'.$store->post_name,
                             'label' => $this->title.' '.$store->post_title,
                             'cost' => ($amount < $min_amount) ? $cost : '0',
-                            'calc_tax' => 'per_item'
+                            'calc_tax' => 'per_order'
                         ];
                         $this->add_rate($rate);
                     }
