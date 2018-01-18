@@ -17,7 +17,7 @@
         padding: 15px;
 
         img {
-            height: 220px;
+            height: 250px;
         }
 
         &:hover {
@@ -98,4 +98,28 @@
     .acf-map {
         width: 100%;
     }
+}
+
+#masthead {
+    background-color: lightgrey;
+
+    a {
+        color: #333;
+    }
+
+    .site-description {
+        font-size: 20px;
+    }
+
+    .site-branding {
+        font-size: 18px;
+    }
+}
+
+.current_page_item, .current-menu-item {
+    background-color: $green;
+}
+
+.site-footer {
+    background-color: $green;
 }
