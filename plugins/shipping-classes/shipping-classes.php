@@ -30,13 +30,13 @@ if (in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_
                     $array['standard'] = [
                         'title' => __('Standard', 'woocommerce'),
                         'type' => 'number',
-                        'description' => __('Standard shipping price', 'woocommerce')
+                        'description' => __('Standard shipping price (ex VAT)', 'woocommerce')
                     ];
                     foreach ($shipping_classes as $shipping_class) {
                         $array[$shipping_class->slug] = [
                             'title' => __($shipping_class->name, 'woocommerce'),
                             'type' => 'number',
-                            'description' => __($shipping_class->name . ' shipping price', 'woocommerce')
+                            'description' => __($shipping_class->name . ' shipping price (ex VAT)', 'woocommerce')
                         ];
                     }
                     $this->form_fields = $array;
@@ -69,13 +69,11 @@ if (in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_
                         $shipping_costs[] = $cost;
                     }
                     $shipping_cost = max($shipping_costs);
-                    // To prevent woocommerce from adding 25% tax when tax is already included in price
-                    $cost = $shipping_cost / 1.25;
 
                     $rate = [
                         'id' => $this->id,
                         'label' => $this->title,
-                        'cost' => $cost,
+                        'cost' => $shipping_cost,
                         'calc_tax' => 'per_order'
                     ];
                     $this->add_rate($rate);

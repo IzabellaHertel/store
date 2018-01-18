@@ -28,7 +28,6 @@ if (in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_
                         'title' => [
                             'title' => __('Title', 'woocommerce'),
                             'type' => 'text',
-                            'description' => __('This controls the title which the user sees during checkout.', 'woocommerce'),
                             'default' => __('Local pickup', 'woocommerce')
                         ],
                         'description' => [
@@ -46,7 +45,7 @@ if (in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_
                         'cost' => [
                             'title' => __('Cost', 'woocommerce'),
                             'type' => 'text',
-                            'description' => __('If total puchase amount does not extend minimum order amount, choose which price to pay', 'woocommerce'),
+                            'description' => __('If total puchase amount does not extend minimum order amount, choose which price to pay. (ex VAT)', 'woocommerce'),
                             'default' => __('100', 'woocommerce')
                         ]
                     ];
@@ -64,9 +63,6 @@ if (in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_
                             'numberposts' => -1
                         ]
                     );
-
-                    // To prevent woocommerce from adding 25% tax when tax is already included in price
-                    $cost = $cost / 1.25;
 
                     foreach ($stores as $store) {
                         $rate = [
