@@ -25,17 +25,6 @@ if (in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_
 
                 function init_form_fields() {
                     $this->form_fields = [
-                        'title' => [
-                            'title' => __('Title', 'woocommerce'),
-                            'type' => 'text',
-                            'default' => __('Local pickup', 'woocommerce')
-                        ],
-                        'description' => [
-                            'title' => __('Description', 'woocommerce'),
-                            'type' => 'textarea',
-                            'description' => __('This controls the description which the user sees during checkout.', 'woocommerce'),
-                            'default' => __('Choose which store to pickup your package', 'woocommerce')
-                        ],
                         'min_amount' => [
                             'title' => __('Minimum order amount', 'woocommerce'),
                             'type' => 'text',

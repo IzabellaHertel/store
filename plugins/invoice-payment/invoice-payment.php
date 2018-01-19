@@ -136,7 +136,7 @@ if (in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_
                     if ($control_number == $sum) {
                         return true;
                     } else {
-                        wc_add_notice(__('Control number invalid', 'woothemes'). $error_message, 'error');
+                        wc_add_notice(__('Your ssn is invalid', 'woothemes'). $error_message, 'error');
                         return false;
                     }
 
