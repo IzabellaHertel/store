@@ -196,9 +196,9 @@ function recent_posts() {
 * Related products on single post
 *
 */
-function related_products_post($category_name) {
+function related_products_post($category_id) {
     // Get the full term from category name to access ID
-    $category = get_term_by('name', $category_name, 'product_cat');
+    $category = get_term_by('id', $category_id, 'product_cat');
 
     $args = [
         'post_type' => 'product',
