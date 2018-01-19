@@ -1,8 +1,10 @@
-.products {
-    &.bestsellers {
-        .product {
-            width: 30.4347826087%;
-            margin-right: 4.347826087%;
+@media (min-width: 768px) {
+    .products {
+        &.bestsellers {
+            .product {
+                width: 30.4347826087%;
+                margin-right: 4.347826087%;
+            }
         }
     }
 }
@@ -31,7 +33,7 @@
     margin-bottom: 20px;
 
     .image {
-        max-width: 20%;
+        max-width: 100%;
         display: inline-block;
     }
     &:nth-child(2n) {
@@ -44,7 +46,7 @@
         }
     }
     .content {
-        width: 78%;
+        width: 100%;
         background-color: $green;
         display: inline-block;
         padding: 20px 40px;
@@ -80,11 +82,11 @@
         margin-left: 49%;
     }
     .content {
-        width: 48%;
+        width: 100%;
         padding: 20px;
         text-align: right;
         display: inline-block;
-        position: absolute;
+        position: relative;
         top: 0;
     }
 }
@@ -122,4 +124,67 @@
 
 .site-footer {
     background-color: $green;
+}
+
+.hidden-mobile {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .hidden-mobile {
+        display: block;
+    }
+
+    .store {
+        background-color: $green;
+        &:nth-child(2n) {
+            background-color: $blue;
+            color: white;
+            h2 {
+                color: white;
+            }
+        }
+        display: block;
+        position: relative;
+        width: 100%;
+        .acf-map {
+            width: 50%;
+            display: inline-block;
+            margin-left: 49%;
+        }
+        .content {
+            width: 48%;
+            padding: 20px;
+            text-align: right;
+            display: inline-block;
+            position: absolute;
+            top: 0;
+        }
+    }
+
+    .blogpost {
+        width: 100%;
+        margin-bottom: 20px;
+
+        .image {
+            max-width: 20%;
+            display: inline-block;
+        }
+        &:nth-child(2n) {
+            .content {
+                h2 {
+                    color: white;
+                }
+                color: white;
+                background-color: $blue;
+            }
+        }
+        .content {
+            width: 78%;
+            background-color: $green;
+            display: inline-block;
+            padding: 20px 40px;
+            text-align: center;
+        }
+    }
 }

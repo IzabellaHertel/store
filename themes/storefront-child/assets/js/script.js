@@ -70,13 +70,25 @@
         loop: true
     });
 
-    var swiper = new Swiper('.swipe-2', {
-        slidesPerView: 3,
-        spaceBetween: 30,
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
-    });
+
+    if ($(window).width() < 768) {
+        var swiper = new Swiper('.swipe-2', {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+        });
+    } else {
+        var swiper = new Swiper('.swipe-2', {
+            slidesPerView: 3,
+            spaceBetween: 30,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+        });
+    }
 
 })(jQuery);

@@ -46,7 +46,7 @@
 
         .swiper-excerpt {
             font: {
-                size: 40px;
+                size: 20px;
             }
             text: {
                 transform: uppercase;
@@ -77,4 +77,20 @@
       -webkit-align-items: center;
       align-items: center;
   }
+}
+
+@media (min-width 768px) {
+
+    .swipe-1 {
+
+        .swiper-slide {
+
+            .swiper-excerpt {
+                font: {
+                    size: 40px;
+                }
+            }
+        }
+    }
+
 }
