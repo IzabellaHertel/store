@@ -3,6 +3,11 @@
 /plugins/woocommerce
 /plugins/advanced-custom-fields-pro
 /plugins/contact-form-7
+/plugins/ewww-image-optimizer
+/plugins/w3-total-cache
+/ewww
+/cache
+/w3tc-config
 .DS_Store
 */.DS_Store
 /themes/storefront
